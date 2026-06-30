@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from ChangePointRegression import ChangePointRegression
 
-class ModelFitter:
+class CPRModelFitter:
     def __init__(self, x, y, max_K=3, steps=2000):
         self.x = x
         self.y = y
@@ -61,7 +61,7 @@ class ModelFitter:
         plt.plot(x_grid.numpy(), p_grid.numpy(), color="red")
         dividing_line = self.best_model.tau.detach().numpy()[0]
         plt.plot([dividing_line, dividing_line], [0,1], color='black', linestyle='--', linewidth=1)
-        plt.xlabel("Quadrats in Y Direction")
+        plt.xlabel("Rows on the Plot")
         plt.ylabel("P(SP)")
         plt.title("Logistic Regression Change-Point Model")
         plt.text(x=dividing_line + 1, y=0.5, s=f"Change-Point = {dividing_line:.2f}")
